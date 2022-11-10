@@ -2,6 +2,7 @@ package com.bakomotors.backend.Controller;
 
 
 import com.bakomotors.backend.Model.Category;
+
 import com.bakomotors.backend.Services.CategoryService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
@@ -28,7 +29,7 @@ public class CategoryController {
     private final CategoryService categoryService;
 
     @PostMapping(path = "", consumes = "multipart/form-data")
-    public void saveCategory(@RequestParam("category") String data) throws JsonProcessingException {
+    public void saveCategory(@RequestParam("category") String data) throws IOException {
         Category category = new ObjectMapper().readValue(data, Category.class);
         categoryService.save(category);
     }

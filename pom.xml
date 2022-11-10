@@ -18,6 +18,7 @@
 		<java.version>11</java.version>
 	</properties>
 	<dependencies>
+	
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -38,10 +39,17 @@
     <artifactId>jaxb-api</artifactId>
     <version>2.3.0</version>
 </dependency>
-		<dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-tomcat</artifactId>
+	<dependency>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-starter-web</artifactId>
+  <exclusions>
+    <exclusion>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-tomcat</artifactId>
+    </exclusion>
+  </exclusions>
 </dependency>
+
 		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -70,6 +78,7 @@
 		<dependency><groupId>mysql</groupId>
 <artifactId>mysql-connector-java</artifactId>
 
+		
 
 </dependency>
 
@@ -102,11 +111,22 @@
 	</dependencies>
 
 	<build>
+	
+    <resources>
+        <resource>
+            <directory>src/main/resources</directory>
+            <filtering>true</filtering>
+        </resource>
+    </resources>
+ 
 		<plugins>
 			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
+				<groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-resources-plugin</artifactId>
+    <version>3.1.0</version>
 				<configuration>
+				        <propertiesEncoding>UTF-8</propertiesEncoding>
+				
 					<excludes>
 						<exclude>
 							<groupId>org.projectlombok</groupId>
